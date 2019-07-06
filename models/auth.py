@@ -8,6 +8,10 @@ class User(Base):
     name = Column(String(50),unique=True,nullable=False)
     password = Column(String(50))
     creatime = Column(DateTime,default=datetime.now)
+    email = Column(String(80))
+
+    def __repr__(self):
+        return "<UserId:{},Username:{}>".format(self.id,self.name)
 
 
 if __name__ == '__main__':
