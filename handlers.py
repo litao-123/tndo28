@@ -1,15 +1,12 @@
-import tornado.web
-import os
 import glob
-from util.mod_file import Calculation
-from pycket.session import SessionMixin
+
+import os
+import tornado.web
 from PIL import Image
 
+from handlers.main import BaseHandler
+from util.mod_file import Calculation
 
-class BaseHandler(tornado.web.RequestHandler,SessionMixin):
-    def get_current_user(self):
-        return self.session.get('tudo_cookie',None)
-        # return self.get_secure_cookie('tudo_cookie',None)
 
 class IndexHandler(BaseHandler):
     @tornado.web.authenticated

@@ -1,4 +1,5 @@
 import tornado.web
+from pycket.session import SessionMixin
 
 
 class IndexHandler(tornado.web.RequestHandler):
@@ -18,3 +19,9 @@ class PostHandler(tornado.web.RequestHandler):
     '''
     def get(self,post_id):
         self.render('post.html',post_id=post_id)
+
+
+class BaseHandler(tornado.web.RequestHandler,SessionMixin):
+    def get_current_user(self):
+        return self.session.get('tudo_cookie',None)
+        # return self.get_secure_cookie('tudo_cookie',None)
