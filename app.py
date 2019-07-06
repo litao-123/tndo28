@@ -15,7 +15,7 @@ class Application(tornado.web.Application):
             (r"/", IndexHandler),
             (r"/explore", ExploreHandler),
             (r"/post/(?P<post_id>[0-9]+)", PostHandler),
-            (r"/signup)", RegisterHandler),
+            (r"/signup", RegisterHandler),
         ]
         settings = dict(
             debug=debug,
