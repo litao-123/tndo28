@@ -10,7 +10,7 @@ class IndexHandler(tornado.web.RequestHandler):
 class ExploreHandler(tornado.web.RequestHandler):
     #最近上传的图片页面
     def get(self):
-        self.render('explore.html',a=100)
+        self.render('explore.html')
 
 class PostHandler(tornado.web.RequestHandler):
     '''
