@@ -1,0 +1,7 @@
+{% if username %}
+    欢迎 {{ username }} 登录
+<img src="static/images/01.jpg" width="200px" alt="">
+{#<img src="{{ static_url('images/02.webp') }}" width="200px" alt="">#}
+{% else %}
+    亲，请登录
+{% end %}

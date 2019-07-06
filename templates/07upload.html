@@ -1,0 +1,9 @@
+{% extends 03base.html %}
+{% block title %} upload page{% end %}
+{% block content %}
+<form action="/upload" enctype="multipart/form-data" method="post">
+{#  {% module xsrf_form_html() %}#}
+    File:<input type="file" name="picture"> <br>
+    <input type="submit">
+</form>
+{% end %}

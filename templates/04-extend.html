@@ -1,0 +1,50 @@
+{% extends ./03base.html %}
+{% block title %} Extend {% end %}
+{% if username %}
+    欢迎 {{ username }} 登录
+<img src="static/images/01.jpg" width="200px" alt="">
+{% end %}
+{% block content %}
+{% include ./05-include.html %}
+ <h1> hello world!</h1>
+{{ haha() }}
+<br>
+{% set c=cacul() %}
+{{ c.sum(5,9) }}
+<br>
+<br>
+{% import time %}
+{{ time.ctime() }}
+{#<br>#}
+{#{% from util.mod_file import add_num,upper %}#}
+{#{{ add_num(1,11) }}#}
+{#<br>#}
+{#{{ upper('hello world') }}#}
+{#<br>#}
+{#{% apply upper %}#}
+{#fgafg 2w34ert fgaedf gaedfrd wergazwf dfgSDHQWE sdfasdas SDasda#}
+{#JJKL hjghhj ghhjkk qwqwqw sasas sdsdsd sdsd sddf kujhn#}
+{#{% end %}#}
+{#<br>#}
+{#自动识别a标签#}
+{#与全局转义有关#}
+{#{{ linkify ('百度：http://www.baidu.com') }}#}
+{#<br>#}
+{#{% raw linkify ('百度：http://www.baidu.com') %}#}
+{#<br>#}
+{#('百度：http://www.baidu.com')#}
+
+<br>
+{{ func1() }}
+<br>
+{{ methods1() }}
+<br>
+{{ methods2() }}
+{% module TestModule() %}
+<br>
+{#{% module Advertisement() %}#}
+
+{% end %}
+{#{% block image %}#}
+{#<img src="{{ static_url('images/01.jpg') }}" alt="">#}
+{#{% end %}#}
