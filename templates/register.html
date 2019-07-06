@@ -1,0 +1,10 @@
+{% extends 03base.html %}
+{% block title %} register page {% end %}
+{% block content %}
+<form action="/signup" enctype="multipart/form-data" method="post">
+    Username:<input type="text" name="username"> <br>
+    Passwd:<input type="password" name="password1"> <br>
+    Repeat Passwd:<input type="password" name="password2"> <br>
+    <input type="submit">
+</form>
+{% end %}
