@@ -1,6 +1,9 @@
 import tornado.web
 from pycket.session import SessionMixin
 
+class BaseHandler(tornado.web.RequestHandler,SessionMixin):
+    def get_current_user(self):
+        return self.session.get('tudo_user',None)
 
 class IndexHandler(tornado.web.RequestHandler):
     # 首页，用户上传图片的展示
@@ -21,7 +24,3 @@ class PostHandler(tornado.web.RequestHandler):
         self.render('post.html',post_id=post_id)
 
 
-class BaseHandler(tornado.web.RequestHandler,SessionMixin):
-    def get_current_user(self):
-        return self.session.get('tudo_cookie',None)
-        # return self.get_secure_cookie('tudo_cookie',None)

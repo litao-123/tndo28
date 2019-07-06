@@ -2,7 +2,7 @@ import tornado.options
 from tornado.options import define, options
 
 from handlers.main import IndexHandler,ExploreHandler,PostHandler
-from handlers.account import RegisterHandler
+from handlers.account import RegisterHandler,LoginHandler
 from util import ui_modules, ui_methods
 
 define('port',default='8000',type=int,help='Linstening port')
@@ -16,6 +16,7 @@ class Application(tornado.web.Application):
             (r"/explore", ExploreHandler),
             (r"/post/(?P<post_id>[0-9]+)", PostHandler),
             (r"/signup", RegisterHandler),
+            (r"/login", LoginHandler),
         ]
         settings = dict(
             debug=debug,
