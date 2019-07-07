@@ -1,2 +1,7 @@
 {% extends 03base.html %}
-{% block content %} Explore html {% end %}
+{% block title %} explore html {% end %}
+{% block content %} Explore html
+{% for p in posts %}
+<img src="{{ static_url(p.thumb_url) }}" />
+{% end %}
+{% end %}

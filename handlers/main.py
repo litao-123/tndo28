@@ -16,10 +16,11 @@ class IndexHandler(tornado.web.RequestHandler):
         # self.write("aa Hello, world nihao")
         self.render('index.html',posts=posts)
 
-class ExploreHandler(tornado.web.RequestHandler):
-    #最近上传的图片页面
+class ExploreHandler(BaseHandler):
+    #最近上传的缩略图片页面
     def get(self):
-        self.render('explore.html')
+        posts = get_all_posts()
+        self.render('explore.html',posts=posts)
 
 class PostHandler(tornado.web.RequestHandler):
     '''
@@ -46,6 +47,6 @@ class UploadHandler(BaseHandler):
             up_img = UploadImage(p['filename'],self.settings['static_path'])
             up_img.save_upload(p['body'])
             up_img.make_thumb()
-            post_id = add_post(up_img.image_url,self.current_user)
+            post_id = add_post(up_img.image_url,up_img.thumb_url,self.current_user)
 
         self.redirect('/post/{}'.format(post_id))
