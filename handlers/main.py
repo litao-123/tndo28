@@ -2,18 +2,18 @@ import tornado.web
 from PIL import Image
 from pycket.session import SessionMixin
 
-from util.account import add_post,get_all_posts,get_post
+from util.account import add_post,get_all_posts,get_post,get_posts_for
 from util.photo import UploadImage
 
 class BaseHandler(tornado.web.RequestHandler,SessionMixin):
     def get_current_user(self):
         return self.session.get('tudo_user',None)
 
-class IndexHandler(tornado.web.RequestHandler):
+class IndexHandler(BaseHandler):
     # 首页，用户上传图片的展示
+    @tornado.web.authenticated
     def get(self):
-        posts = get_all_posts()
-        # self.write("aa Hello, world nihao")
+        posts = get_posts_for(self.current_user)
         self.render('index.html',posts=posts)
 
 class ExploreHandler(BaseHandler):

@@ -3,7 +3,7 @@ import hashlib
 from models.auth import User,Session,Post
 from models.db import Session
 
-
+db_session = Session()
 def hashed(text):
     return hashlib.md5(text.encode('utf8')).hexdigest()
 
@@ -32,11 +32,14 @@ def add_post(image_url,thumb_url,username):
     return post_id
 
 def get_all_posts():
-    session = Session()
-    posts = session.query(Post).all()
+    posts = db_session.query(Post).all()
+    return posts
+
+def get_posts_for(username):
+    user = db_session.query(User).filter_by(name=username).first()
+    posts = db_session.query(Post).filter_by(user=user).all()
     return posts
 
 def get_post(post_id):
-    session= Session()
-    post = session.query(Post).filter_by(id=post_id).first()
+    post = db_session.query(Post).filter_by(id=post_id).first()
     return post

@@ -2,6 +2,8 @@
 {% block content %} Index html {% end %}
 {% block content %}
 {% for post in posts %}
+<a href="{{ '/post/{}'.format(post.id) }}">
 <img src="{{ static_url(post.image_url) }}" /> <br>
+</a>
 {% end %}
 {% end %}
