@@ -2,7 +2,6 @@ import glob
 
 import os
 import tornado.web
-from PIL import Image
 
 from handlers.main import BaseHandler
 from util.mod_file import Calculation
@@ -83,24 +82,4 @@ class SubmitHandler(BaseHandler):
                     self.redirect('/pic')
             else:
                 self.redirect('/temp')
-
-class UploadHandler(BaseHandler):
-    def get(self):
-        self.render('07upload.html')
-    def post(self):
-        pics = self.request.files.get('picture','[]')
-        print(pics[0]['filename'])
-        for p in pics:
-            save_path = 'static/upload/{}'.format(p['filename'])
-            print(save_path)
-            # print(p['body'])
-            print(p['content_type'])
-            with open(save_path,'wb') as fh:
-                fh.write(p['body'])
-
-            im = Image.open(save_path)
-            im.thumbnail((200,200))
-            im.save('static/upload/{}_thumb.jpg'.format(p['filename']),'JPEG')
-
-        self.redirect('/pic')
 

@@ -1,7 +1,7 @@
 import tornado.options
 from tornado.options import define, options
 
-from handlers.main import IndexHandler,ExploreHandler,PostHandler
+from handlers.main import IndexHandler,ExploreHandler,PostHandler,UploadHandler
 from handlers.account import RegisterHandler,LoginHandler
 from util import ui_modules, ui_methods
 
@@ -17,6 +17,7 @@ class Application(tornado.web.Application):
             (r"/post/(?P<post_id>[0-9]+)", PostHandler),
             (r"/signup", RegisterHandler),
             (r"/login", LoginHandler),
+            (r"/upload", UploadHandler),
         ]
         settings = dict(
             debug=debug,
@@ -27,7 +28,7 @@ class Application(tornado.web.Application):
             ui_methods=ui_methods,
             ui_modules=ui_modules,
             cookie_secret='12345612',
-            # login_url='/temp',
+            login_url='/login',
             # xsrf_cookies = True,
             pycket={
                 'engine': 'redis',

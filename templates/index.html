@@ -1,2 +1,7 @@
 {% extends 03base.html %}
 {% block content %} Index html {% end %}
+{% block content %}
+{% for post in posts %}
+<img src="{{ static_url(post.image_url) }}" /> <br>
+{% end %}
+{% end %}
