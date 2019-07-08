@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-{#    <title> {% block title %} default title {% end % }</title>#}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> {% block title %}Tornado{% end %}</title>
     <link rel="shortcut icon" href="{{ static_url('images/favicon.ico') }}">
+      <link rel="stylesheet" href="{{ static_url('css/bootstrap.css') }}">
 </head>
 <body> 
 {% if current_user %}
@@ -13,5 +14,8 @@
 {% block content %}{% end %}
 {% block image %}
 {% end %}
+<script src="{{ static_url('js/jquery.slim.min.js') }}"></script>
+<script src="{{ static_url('js/popper.min.js') }}"></script>
+<script src="{{ static_url('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

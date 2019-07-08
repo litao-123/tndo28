@@ -28,10 +28,11 @@ class PostHandler(tornado.web.RequestHandler):
     '''
     def get(self,post_id):
         post= get_post(post_id)
+        user = post.user
         if not post:
             self.write('wrong id {}'.format(post_id))
         else:
-            self.render('post.html',post=post)
+            self.render('post.html',post=post,user= user)
 
 
 class UploadHandler(BaseHandler):

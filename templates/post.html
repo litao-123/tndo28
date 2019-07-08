@@ -1,6 +1,6 @@
 {% extends 03base.html %}
 {% block title %} post{% end %}
 {% block content %}
-post ID :{{ post.id }} upload by {{ post.user.name }}   <br>
+post ID :{{ post.id }} upload by {{ user.name }}   <br>
 <img src="{{ static_url(post.image_url) }}" />
 {% end %}

@@ -1,9 +1,19 @@
 {% extends 03base.html %}
 {% block content %} Index html {% end %}
 {% block content %}
-{% for post in posts %}
-<a href="{{ '/post/{}'.format(post.id) }}">
-<img src="{{ static_url(post.image_url) }}" /> <br>
-</a>
-{% end %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+            <a href="{{ '/post/{}'.format(post.id) }}">
+            <img src="{{ static_url(post.image_url) }}" class="img-fluid" /> <br>
+            </a>
+            {% end %}
+        </div>
+        <div class="col-md-4">44</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-6 col-md-4"> 8-6-4</div>
+    </div>
+</div>
 {% end %}
